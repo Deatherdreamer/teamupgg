@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center text-white">Bienvenidos a Teamupgg</h1>
+      <p class="text-center text-white">El mejor lugar para formar tu equipo</p>
+    </div>
+  </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card card-body">
+                <h2>Publicaciones</h2>
+                <p>Publica tus anuncios y encuentra jugadores para tu equipo</p>
+                <a href="{% url 'publicaciones' %}" class="btn btn-primary">Ver Publicaciones</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <h2>Torneos</h2>
+                <p>Participa en los torneos de Teamupgg</p>
+                <a href="{% url 'torneos' %}" class="btn btn-primary">Ver Torneos</a>
+            </div>
+        </div>
+        
+
 {% endblock %}

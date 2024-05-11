@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center text-white">Publicaciones</h1>
+        <p class="text-center text-white">Publica tus anuncios y encuentra jugadores para tu equipo</p>
+        <a href="{% url 'publicar' %}" class="text-center text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Crear publicación</a>
+        
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      {% for publicacion in publicaciones %}
+        <div class="col-md-3">
+          <div class="card card-body">
+            <h2>{{ publicacion.title }}</h2>
+
+            <p>{{ publicacion.message }}</p>
+            <p>{{ publicacion.game }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

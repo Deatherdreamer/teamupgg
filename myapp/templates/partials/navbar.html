@@ -1,19 +1,39 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+    <a class="navbar-brand" href="{% url 'index' %}" style="font-size: 22px;"> <strong>Teamupgg</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse show" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          <a class="nav-link " aria-current="page" href="{% url 'index' %}" style="font-size: 20px;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link " href="{% url 'torneos' %}"style="font-size: 20px;">Torneo </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link " href="{% url 'publicaciones' %}"style="font-size: 20px;">Publicaciones</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'perfil' %}"style="font-size: 20px;">Perfil</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'account_logout' %}"style="font-size: 20px;">Cerrar Sesion</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'account_login' %}"style="font-size: 20px;">Login</a>
+        </li>
+        {% endif %}
       </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-success" type="submit">Buscar</button>
+      </form>
     </div>
   </div>
 </nav>
+<!--  <button class="btn btn-outline-success" type="submit">Buscar</button>  -->

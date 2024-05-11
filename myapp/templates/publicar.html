@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center text-white">Crear Publicacion</h1>
+        <p class="text-center text-white">Publica tus anuncios y encuentra jugadores para tu equipo</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-body border-0">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Publicar</button>
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
