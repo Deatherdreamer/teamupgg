@@ -80,6 +80,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -321,6 +353,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0005_profile_riot_puuid_profilesocials",
+        "description": "myapp.migrations.0005_profile_riot_puuid_profilesocials",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('myapp', '0004_profile_nickname'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='profile',\n            name='riot_puuid',\n            field=models.CharField(blank=True, max_length=100, null=True),\n        ),",
+        "detail": "myapp.migrations.0005_profile_riot_puuid_profilesocials",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0006_alter_profilesocials_network",
+        "description": "myapp.migrations.0006_alter_profilesocials_network",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('myapp', '0005_profile_riot_puuid_profilesocials'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='profilesocials',\n            name='network',\n            field=models.CharField(choices=[('Facebook', 'Facebook'), ('Twitter', 'Twitter'), ('Instagram', 'Instagram'), ('Twitch', 'Twitch'), ('Youtube', 'Youtube'), ('Discord', 'Discord'), ('Steam', 'Steam')], max_length=100),\n        ),",
+        "detail": "myapp.migrations.0006_alter_profilesocials_network",
+        "documentation": {}
+    },
+    {
         "label": "MyappConfig",
         "kind": 6,
         "importPath": "myapp.apps",
@@ -352,7 +402,16 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Profile(models.Model):\n    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)\n    nickname = models.CharField(max_length=100, blank=True, null=True)\n    date_of_birth = models.DateField()\n    gender = models.CharField(max_length=10)\t\n    country = models.CharField(max_length=100)  \n    def __str__(self):\n        return self.user.first_name + ' ' + self.user.last_name\nclass Game(models.Model):\n    name = models.CharField(max_length=100)",
+        "peekOfCode": "class Profile(models.Model):\n    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)\n    nickname = models.CharField(max_length=100, blank=True, null=True)\n    date_of_birth = models.DateField()\n    gender = models.CharField(max_length=10)\t\n    country = models.CharField(max_length=100)  \n    riot_puuid = models.CharField(max_length=100, blank=True, null=True)\n    def __str__(self):\n        return self.user.first_name + ' ' + self.user.last_name\nclass ProfileSocials(models.Model):",
+        "detail": "myapp.models",
+        "documentation": {}
+    },
+    {
+        "label": "ProfileSocials",
+        "kind": 6,
+        "importPath": "myapp.models",
+        "description": "myapp.models",
+        "peekOfCode": "class ProfileSocials(models.Model):\n    NETWORK_CHOICES = [\n        ('Facebook', 'Facebook'),\n        ('Twitter', 'Twitter'),\n        ('Instagram', 'Instagram'),\n        ('Twitch', 'Twitch'),\n        ('Youtube', 'Youtube'),\n        ('Discord', 'Discord'),\n        ('Steam', 'Steam'),\n    ]",
         "detail": "myapp.models",
         "documentation": {}
     },

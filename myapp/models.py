@@ -8,10 +8,29 @@ class Profile(models.Model):
     date_of_birth = models.DateField()
     gender = models.CharField(max_length=10)	
     country = models.CharField(max_length=100)  
+    riot_puuid = models.CharField(max_length=100, blank=True, null=True)
     
     
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
+    
+class ProfileSocials(models.Model):
+    NETWORK_CHOICES = [
+        ('Facebook', 'Facebook'),
+        ('Twitter', 'Twitter'),
+        ('Instagram', 'Instagram'),
+        ('Twitch', 'Twitch'),
+        ('Youtube', 'Youtube'),
+        ('Discord', 'Discord'),
+        ('Steam', 'Steam'),
+    ]
+    
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    network = models.CharField(max_length=100, choices=NETWORK_CHOICES)
+    url = models.URLField()
+    
+    def __str__(self):
+        return self.profile.user.first_name + ' ' + self.profile.user.last_name + ' | ' + self.network
 
 class Game(models.Model):
     name = models.CharField(max_length=100)
