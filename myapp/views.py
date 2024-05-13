@@ -1,18 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Game, Post, Tournament
+from .models import Game, Post, Tournament, Profile
 from .forms import PostForm
 
 # Create your views here.
 
 @login_required
 def index(request):
-    messages.success(request, 'Hello world.')
 
-    return render(request, 'index.html', {
-        'nombre': 'pedro',
-        'edad': 25        
+    return render(request, 'index.html', {   
     })
 
 @login_required
@@ -48,5 +45,8 @@ def publicar(request):
     })
 
 @login_required
-def perfil(request):
-    return render(request, 'perfil.html')
+def perfil(request, id):
+    profile = Profile.objects.get(user_id=id)
+    return render(request, 'perfil.html', {
+        'profile': profile
+    })

@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container">
+<div class="container">
+<nav  aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}"><h5><strong>Home</strong> </h5></a></li>
+    <li class="breadcrumb-item"><a href="{% url 'publicaciones' %}"> <h7><strong>Publicaciones</strong></h7> </a> </li>
+    <li class="breadcrumb-item active"><a href="{% url 'publicar' %}"> <h7><strong>Publicar</strong></h7> </a></li>
+  </ol>
+</nav>
+  <div class="container" style="margin-top: -20px;">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h1 class="text-center text-white">Crear Publicacion</h1>
+        <h1 class="text-center text-white"> <strong>Crear Publicacion</strong></h1>
         <p class="text-center text-white">Publica tus anuncios y encuentra jugadores para tu equipo</p>
       </div>
     </div>
@@ -22,4 +30,5 @@
       </div>
     </div>
   </div>
+</div>
 {% endblock %}

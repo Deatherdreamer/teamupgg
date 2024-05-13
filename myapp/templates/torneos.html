@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 style="color: white;">Torneos</h1>
+<div class="container">
+<nav aria-label="breadcrumb"></nav>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}"><h5><strong>Home</strong> </h5></a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'torneos' %}"> <h7><strong>Torneos</strong></h7> </a> </li>
+    <li class="breadcrumb-item "></li>
+</ol>
+<div class="container"style="margin-top: -20px;">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center text-white"><strong>Torneos</strong></h1>
+        <p class="text-center text-white">Publica tus Torneos y encuentra jugadores con quienes enfrentarte</p>
+          <div class="text-center">
+            <a href="#" class="btn btn-outline-light text-center  link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"style="border: 3px solid purple;width: 100%; max-width: 500px;">Crear Torneo</a>
+          </div>
+      </div>
+    </div>
+
+</div>
 {% endblock %}

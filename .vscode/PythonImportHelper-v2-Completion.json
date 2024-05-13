@@ -8,6 +8,46 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -57,7 +97,24 @@
         "documentation": {}
     },
     {
+        "label": "django.contrib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "messages",
         "importPath": "django.contrib",
         "description": "django.contrib",
         "isExtraImport": true,
@@ -97,19 +154,28 @@
         "documentation": {}
     },
     {
+        "label": "SignupForm",
+        "importPath": "allauth.account.forms",
+        "description": "allauth.account.forms",
+        "isExtraImport": true,
+        "detail": "allauth.account.forms",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "get_user_model",
         "importPath": "django.contrib.auth",
         "description": "django.contrib.auth",
         "isExtraImport": true,
         "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractUser",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -237,6 +303,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0003_profile",
+        "description": "myapp.migrations.0003_profile",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('myapp', '0002_post_game'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Profile',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "myapp.migrations.0003_profile",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0004_profile_nickname",
+        "description": "myapp.migrations.0004_profile_nickname",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('myapp', '0003_profile'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='profile',\n            name='nickname',\n            field=models.CharField(blank=True, max_length=100, null=True),\n        ),",
+        "detail": "myapp.migrations.0004_profile_nickname",
+        "documentation": {}
+    },
+    {
         "label": "MyappConfig",
         "kind": 6,
         "importPath": "myapp.apps",
@@ -246,12 +330,30 @@
         "documentation": {}
     },
     {
+        "label": "MyCustomSignupForm",
+        "kind": 6,
+        "importPath": "myapp.forms",
+        "description": "myapp.forms",
+        "peekOfCode": "class MyCustomSignupForm(SignupForm):\n    email = forms.EmailField(\n        max_length=254,\n        label='Correo',\n        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo'}),\n        help_text='Ingrese su correo'\n    )\n    first_name = forms.CharField(\n        max_length=30,\n        label='Nombre',",
+        "detail": "myapp.forms",
+        "documentation": {}
+    },
+    {
         "label": "PostForm",
         "kind": 6,
         "importPath": "myapp.forms",
         "description": "myapp.forms",
         "peekOfCode": "class PostForm(forms.ModelForm):\n    class Meta:\n        model = Post\n        fields = ['title', 'message', 'game']\n        labels = {\n            'title': 'Titulo',\n            'message': 'Mensaje',\n            'game': 'Juego'\n        }\n        help_texts = {",
         "detail": "myapp.forms",
+        "documentation": {}
+    },
+    {
+        "label": "Profile",
+        "kind": 6,
+        "importPath": "myapp.models",
+        "description": "myapp.models",
+        "peekOfCode": "class Profile(models.Model):\n    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)\n    nickname = models.CharField(max_length=100, blank=True, null=True)\n    date_of_birth = models.DateField()\n    gender = models.CharField(max_length=10)\t\n    country = models.CharField(max_length=100)  \n    def __str__(self):\n        return self.user.first_name + ' ' + self.user.last_name\nclass Game(models.Model):\n    name = models.CharField(max_length=100)",
+        "detail": "myapp.models",
         "documentation": {}
     },
     {
@@ -286,7 +388,7 @@
         "kind": 5,
         "importPath": "myapp.urls",
         "description": "myapp.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/', perfil , name='perfil'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/<int:id>/', perfil , name='perfil'),\n]",
         "detail": "myapp.urls",
         "documentation": {}
     },
@@ -295,7 +397,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def index(request):\n    messages.success(request, 'Hello world.')\n    return render(request, 'index.html', {\n        'nombre': 'pedro',\n        'edad': 25        \n    })\n@login_required\ndef torneos(request):\n    return render(request, 'torneos.html')\n@login_required",
+        "peekOfCode": "def index(request):\n    return render(request, 'index.html', {   \n    })\n@login_required\ndef torneos(request):\n    return render(request, 'torneos.html')\n@login_required\ndef publicaciones(request):\n    posts = Post.objects.all()\n    return render(request, 'publicaciones.html', {",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -331,7 +433,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def perfil(request):\n    return render(request, 'perfil.html')",
+        "peekOfCode": "def perfil(request, id):\n    profile = Profile.objects.get(user_id=id)\n    return render(request, 'perfil.html', {\n        'profile': profile\n    })",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -430,7 +532,7 @@
         "kind": 5,
         "importPath": "teamupgg.settings",
         "description": "teamupgg.settings",
-        "peekOfCode": "ACCOUNT_AUTHENTICATION_METHOD = 'email'\nACCOUNT_EMAIL_REQUIRED=True\nACCOUNT_USERNAME_REQUIRED = False\nLOGIN_REDIRECT_URL = '/'\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',",
+        "peekOfCode": "ACCOUNT_AUTHENTICATION_METHOD = 'email'\nACCOUNT_EMAIL_REQUIRED=True\nACCOUNT_USERNAME_REQUIRED = False\nLOGIN_REDIRECT_URL = '/'\nACCOUNT_FORMS = {'signup': 'myapp.forms.MyCustomSignupForm'}\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {",
         "detail": "teamupgg.settings",
         "documentation": {}
     },
@@ -439,7 +541,7 @@
         "kind": 5,
         "importPath": "teamupgg.settings",
         "description": "teamupgg.settings",
-        "peekOfCode": "ACCOUNT_USERNAME_REQUIRED = False\nLOGIN_REDIRECT_URL = '/'\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }",
+        "peekOfCode": "ACCOUNT_USERNAME_REQUIRED = False\nLOGIN_REDIRECT_URL = '/'\nACCOUNT_FORMS = {'signup': 'myapp.forms.MyCustomSignupForm'}\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',",
         "detail": "teamupgg.settings",
         "documentation": {}
     },
@@ -448,7 +550,16 @@
         "kind": 5,
         "importPath": "teamupgg.settings",
         "description": "teamupgg.settings",
-        "peekOfCode": "LOGIN_REDIRECT_URL = '/'\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}",
+        "peekOfCode": "LOGIN_REDIRECT_URL = '/'\nACCOUNT_FORMS = {'signup': 'myapp.forms.MyCustomSignupForm'}\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }",
+        "detail": "teamupgg.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ACCOUNT_FORMS",
+        "kind": 5,
+        "importPath": "teamupgg.settings",
+        "description": "teamupgg.settings",
+        "peekOfCode": "ACCOUNT_FORMS = {'signup': 'myapp.forms.MyCustomSignupForm'}\nWSGI_APPLICATION = 'teamupgg.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}",
         "detail": "teamupgg.settings",
         "documentation": {}
     },
@@ -484,7 +595,7 @@
         "kind": 5,
         "importPath": "teamupgg.settings",
         "description": "teamupgg.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, 'myapp/static'),\n]",
+        "peekOfCode": "LANGUAGE_CODE = 'es-ve'\nTIME_ZONE = 'America/Caracas'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, 'myapp/static'),\n]",
         "detail": "teamupgg.settings",
         "documentation": {}
     },
@@ -493,7 +604,7 @@
         "kind": 5,
         "importPath": "teamupgg.settings",
         "description": "teamupgg.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, 'myapp/static'),\n]\n# Default primary key field type",
+        "peekOfCode": "TIME_ZONE = 'America/Caracas'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, 'myapp/static'),\n]\n# Default primary key field type",
         "detail": "teamupgg.settings",
         "documentation": {}
     },

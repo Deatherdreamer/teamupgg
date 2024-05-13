@@ -1,39 +1,65 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark" aria-label="Offcanvas navbar large">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}" style="font-size: 22px;"> <strong>Teamupgg</strong></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{% url 'index' %}">TeamUp.GG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse show" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="{% url 'index' %}" style="font-size: 20px;">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{% url 'torneos' %}"style="font-size: 20px;">Torneo </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{% url 'publicaciones' %}"style="font-size: 20px;">Publicaciones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{% url 'perfil' %}"style="font-size: 20px;">Perfil</a>
-        </li>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link " href="{% url 'account_logout' %}"style="font-size: 20px;">Cerrar Sesion</a>
-        </li>
-        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'index' %}">
+              <i class="bi bi-house"></i>
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'publicaciones' %}">
+              <i class="bi bi-stickies"></i>
+              Publicaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'torneos' %}">
+              <i class="bi bi-trophy"></i>
+              Torneos</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link " href="{% url 'account_login' %}"style="font-size: 20px;">Login</a>
-        </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person"></i>
+              Perfil
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="{% url 'perfil' user.id %}">Mi Perfil</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <form method="post" action="{% url 'account_logout' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item">Cerrar Sesion</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'account_login' %}">
+              Iniciar Sesion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">
+              Registrarse</a>
+          </li>
         {% endif %}
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-success" type="submit">Buscar</button>
-      </form>
+          
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
-<!--  <button class="btn btn-outline-success" type="submit">Buscar</button>  -->

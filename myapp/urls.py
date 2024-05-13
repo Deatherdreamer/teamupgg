@@ -7,7 +7,7 @@ urlpatterns = [
     path('publicaciones/', publicaciones , name='publicaciones'),
     path('publicaciones/nueva-publicacion/', publicar , name='publicar'),
     
-    path('perfil/', perfil , name='perfil'),
+    path('perfil/<int:id>/', perfil , name='perfil'),
 ]
     
     
