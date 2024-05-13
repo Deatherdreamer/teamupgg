@@ -51,11 +51,16 @@ class Post(models.Model):
 class Tournament(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
     is_public = models.BooleanField(default=False)
     password = models.CharField(max_length=100, blank=True, null=True)
     max_players = models.IntegerField()
     date_of_tournament = models.DateTimeField()
     participants = models.ManyToManyField(get_user_model(), related_name='participants')
+    
+    def signed_in_players(self):
+        return self.participants.all()
     
     
     

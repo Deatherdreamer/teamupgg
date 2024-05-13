@@ -112,6 +112,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -126,15 +142,6 @@
         "importPath": "django.db.models.deletion",
         "description": "django.db.models.deletion",
         "detail": "django.db.models.deletion",
-        "documentation": {}
-    },
-    {
-        "label": "django.contrib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -227,6 +234,14 @@
         "documentation": {}
     },
     {
+        "label": "reverse",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -256,6 +271,14 @@
         "description": "django.contrib.auth.decorators",
         "isExtraImport": true,
         "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "require_POST",
+        "importPath": "django.views.decorators.http",
+        "description": "django.views.decorators.http",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.http",
         "documentation": {}
     },
     {
@@ -371,6 +394,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0007_tournament_description_tournament_title",
+        "description": "myapp.migrations.0007_tournament_description_tournament_title",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('myapp', '0006_alter_profilesocials_network'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='tournament',\n            name='description',\n            field=models.TextField(default=''),\n            preserve_default=False,",
+        "detail": "myapp.migrations.0007_tournament_description_tournament_title",
+        "documentation": {}
+    },
+    {
         "label": "MyappConfig",
         "kind": 6,
         "importPath": "myapp.apps",
@@ -393,7 +425,16 @@
         "kind": 6,
         "importPath": "myapp.forms",
         "description": "myapp.forms",
-        "peekOfCode": "class PostForm(forms.ModelForm):\n    class Meta:\n        model = Post\n        fields = ['title', 'message', 'game']\n        labels = {\n            'title': 'Titulo',\n            'message': 'Mensaje',\n            'game': 'Juego'\n        }\n        help_texts = {",
+        "peekOfCode": "class PostForm(forms.ModelForm):\n    class Meta:\n        model = Post\n        fields = [ 'game','title', 'message']\n        labels = {\n            'title': 'Titulo',\n            'message': 'Mensaje',\n            'game': 'Juego'\n        }\n        help_texts = {",
+        "detail": "myapp.forms",
+        "documentation": {}
+    },
+    {
+        "label": "TournamentForm",
+        "kind": 6,
+        "importPath": "myapp.forms",
+        "description": "myapp.forms",
+        "peekOfCode": "class TournamentForm(forms.ModelForm):\n    class Meta:\n        model = Tournament\n        fields = ['game', 'title', 'description', 'is_public', 'password', 'max_players', 'date_of_tournament']\n        labels = {\n            'game': 'Juego',\n            'title': 'Titulo',\n            'description': 'Descripción',\n            'is_public': 'Publico',\n            'password': 'Contraseña',",
         "detail": "myapp.forms",
         "documentation": {}
     },
@@ -438,7 +479,7 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Tournament(models.Model):\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)\n    is_public = models.BooleanField(default=False)\n    password = models.CharField(max_length=100, blank=True, null=True)\n    max_players = models.IntegerField()\n    date_of_tournament = models.DateTimeField()\n    participants = models.ManyToManyField(get_user_model(), related_name='participants')",
+        "peekOfCode": "class Tournament(models.Model):\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    description = models.TextField()\n    is_public = models.BooleanField(default=False)\n    password = models.CharField(max_length=100, blank=True, null=True)\n    max_players = models.IntegerField()\n    date_of_tournament = models.DateTimeField()\n    participants = models.ManyToManyField(get_user_model(), related_name='participants')",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -447,7 +488,7 @@
         "kind": 5,
         "importPath": "myapp.urls",
         "description": "myapp.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/<int:id>/', perfil , name='perfil'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('torneos/<int:id>/inscribirse/', inscribirse_torneo, name='inscribirse_torneo'),\n    path('torneos/nuevo-torneo/', nuevo_torneo, name='nuevo_torneo'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/<int:id>/', perfil , name='perfil'),\n]",
         "detail": "myapp.urls",
         "documentation": {}
     },
@@ -456,7 +497,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def index(request):\n    return render(request, 'index.html', {   \n    })\n@login_required\ndef torneos(request):\n    return render(request, 'torneos.html')\n@login_required\ndef publicaciones(request):\n    posts = Post.objects.all()\n    return render(request, 'publicaciones.html', {",
+        "peekOfCode": "def index(request):\n    \"\"\"\n    Vista para la página de inicio.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'index.html'.\n    \"\"\"\n    return render(request, 'index.html', {   \n    })",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -465,7 +506,25 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def torneos(request):\n    return render(request, 'torneos.html')\n@login_required\ndef publicaciones(request):\n    posts = Post.objects.all()\n    return render(request, 'publicaciones.html', {\n        'publicaciones': posts\n    })\n@login_required\ndef publicar(request):",
+        "peekOfCode": "def torneos(request):\n    \"\"\"\n    Vista para la página de torneos.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'torneos.html' y los torneos disponibles.\n    \"\"\"\n    breadcrumbs = [\n        {'name': 'Torneos'},",
+        "detail": "myapp.views",
+        "documentation": {}
+    },
+    {
+        "label": "nuevo_torneo",
+        "kind": 2,
+        "importPath": "myapp.views",
+        "description": "myapp.views",
+        "peekOfCode": "def nuevo_torneo(request):\n    \"\"\"\n    Vista para crear un nuevo torneo.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'nuevo_torneo.html' y el formulario para crear un torneo.\n    \"\"\"\n    breadcrumbs = [\n        {'name': 'Torneos', 'url': reverse('torneos')},",
+        "detail": "myapp.views",
+        "documentation": {}
+    },
+    {
+        "label": "inscribirse_torneo",
+        "kind": 2,
+        "importPath": "myapp.views",
+        "description": "myapp.views",
+        "peekOfCode": "def inscribirse_torneo(request, id):\n    \"\"\"\n    Vista para inscribirse a un torneo.\n    Args:\n        request: La solicitud HTTP recibida.\n        id: El ID del torneo al que se desea inscribir.\n    Returns:\n        La respuesta HTTP con un mensaje de éxito o error.\n    \"\"\"\n    tournament = Tournament.objects.get(id=id)",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -474,7 +533,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def publicaciones(request):\n    posts = Post.objects.all()\n    return render(request, 'publicaciones.html', {\n        'publicaciones': posts\n    })\n@login_required\ndef publicar(request):\n    if request.method == 'POST':\n        form = PostForm(request.POST)\n        if form.is_valid():",
+        "peekOfCode": "def publicaciones(request):\n    \"\"\"\n    Vista para la página de publicaciones.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'publicaciones.html' y las publicaciones disponibles.\n    \"\"\"\n    posts = Post.objects.all()\n    breadcrumbs = [",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -483,7 +542,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def publicar(request):\n    if request.method == 'POST':\n        form = PostForm(request.POST)\n        if form.is_valid():\n            post = form.save(commit=False)\n            post.user = request.user\n            post.save()\n            messages.success(request, 'Post creado correctamente.')\n            return redirect('publicaciones')\n        else:",
+        "peekOfCode": "def publicar(request):\n    \"\"\"\n    Vista para crear una nueva publicación.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'publicar.html' y el formulario para crear una publicación.\n    \"\"\"\n    breadcrumbs = [\n        {'name': 'Publicaciones', 'url': reverse('publicaciones')},",
         "detail": "myapp.views",
         "documentation": {}
     },
@@ -492,7 +551,7 @@
         "kind": 2,
         "importPath": "myapp.views",
         "description": "myapp.views",
-        "peekOfCode": "def perfil(request, id):\n    profile = Profile.objects.get(user_id=id)\n    return render(request, 'perfil.html', {\n        'profile': profile\n    })",
+        "peekOfCode": "def perfil(request, id):\n    \"\"\"\n    Vista para el perfil de un usuario.\n    Args:\n        request: La solicitud HTTP recibida.\n        id: El ID del usuario cuyo perfil se desea ver.\n    Returns:\n        La respuesta HTTP con la plantilla 'perfil.html' y el perfil del usuario especificado.\n    \"\"\"\n    profile = Profile.objects.get(user_id=id)",
         "detail": "myapp.views",
         "documentation": {}
     },

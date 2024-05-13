@@ -2,22 +2,6 @@
 
 {% block content %}
   <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{% url 'index' %}"><h5><strong>Home</strong></h5></a>
-        </li>
-        <li class="breadcrumb-item active">
-          <a href="{% url 'perfil' profile.user.id %}">
-            <h7>
-              <strong>Mi Perfil</strong>
-            </h7>
-          </a>
-        </li>
-        <li class="breadcrumb-item"></li>
-      </ol>
-    </nav>
-
     <section class="row">
       <div class="col-md-4">
         <div class="card">

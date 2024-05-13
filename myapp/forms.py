@@ -1,5 +1,4 @@
 from django import forms
-import django.contrib
 from .models import Post, Game, Profile, Tournament
 from allauth.account.forms import SignupForm
 from django.contrib import messages
@@ -87,7 +86,7 @@ class MyCustomSignupForm(SignupForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'message', 'game']
+        fields = [ 'game','title', 'message']
         labels = {
             'title': 'Titulo',
             'message': 'Mensaje',
@@ -99,7 +98,41 @@ class PostForm(forms.ModelForm):
             'game': 'El juego al que pertenece el post'
         }
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'message': forms.Textarea(attrs={'class': 'form-control'}),
-            'game': forms.Select(attrs={'class': 'form-control'})
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el título'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese el mensaje', 'rows': 5}),
+            'game': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Seleccione el juego'})
         }
+        
+
+class TournamentForm(forms.ModelForm):
+    class Meta:
+        model = Tournament
+        fields = ['game', 'title', 'description', 'is_public', 'password', 'max_players', 'date_of_tournament']
+        labels = {
+            'game': 'Juego',
+            'title': 'Titulo',
+            'description': 'Descripción',
+            'is_public': 'Publico',
+            'password': 'Contraseña',
+            'max_players': 'Maximo de jugadores',
+            'date_of_tournament': 'Fecha del torneo'
+        }
+        help_texts = {
+            'game': 'El juego del torneo',
+            'title': 'El titulo del torneo',
+            'description': 'La descripción del torneo',
+            'is_public': 'Si el torneo es publico',
+            'password': 'La contraseña del torneo',
+            'max_players': 'El maximo de jugadores',
+            'date_of_tournament': 'La fecha del torneo'
+        }
+        widgets = {
+            'game': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Seleccione el juego'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el título'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese la descripción', 'rows': 5}),
+            'is_public': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'password': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la contraseña'}),
+            'max_players': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el maximo de jugadores'}),
+            'date_of_tournament': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la fecha del torneo', 'type': 'date'})
+        }
+       

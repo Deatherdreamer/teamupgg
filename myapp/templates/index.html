@@ -1,49 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active"><a href="{% url 'index' %}"><h5><strong>Home</strong> </h5></a></li>
-      <li class="breadcrumb-item"></li>
-    </ol>
-  </nav>
-
-  <div class="container" style="margin-top: -20px;">
+  <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h1 class="text-center text-white"> <strong>Bienvenidos a Teamupgg</strong> </h1>
+        <h1 class="text-center text-white"><strong>Bienvenidos a Teamupgg</strong></h1>
         <p class="text-center text-white">El mejor lugar para formar tu equipo</p>
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-evenly">
       <div class="col-12 col-sm-6 col-md-4 mt-3">
-        <div class="card border-light">
-          <img src="/static/images/imgtorneo.png" class="card-img-top" alt="Logo de la aplicación">
+        <div class="card border-light rounded-0">
+          <img src="/static/images/imgtorneo.png" class="card-img-top" alt="Logo de la aplicación" />
           <div class="card-body bg-black bg-gradient">
             <h3 class="card-title text-center"><strong>Publicaciones</strong></h3>
             <p class="card-text">Publica tus anuncios y encuentra jugadores para tu equipo</p>
             <div class="text-center">
-              <a href="{% url 'publicaciones' %}" class="btn btn-outline-custom w-100 ">Ver Publicaciones</a>
+              <a href="{% url 'publicaciones' %}" class="btn btn-outline-custom w-100">Ver Publicaciones</a>
             </div>
           </div>
         </div>
       </div>
       <div class="col-12 col-sm-6 col-md-4 mt-3">
-        <div class="card border-light">
-          <img src="/static/images/imgtorneo.png" class="card-img-top" alt="Logo de la aplicación">
+        <div class="card border-light rounded-0">
+          <img src="/static/images/imgtorneo.png" class="card-img-top" alt="Logo de la aplicación" />
           <div class="card-body bg-black bg-gradient">
             <h3 class="card-title text-center"><strong>Torneos</strong></h3>
-            <p class="card-text">Crea o Participa en los torneos de Teamupgg y divierte al maximo </p>
+            <p class="card-text">Crea o Participa en los torneos de Teamupgg y divierte al maximo</p>
             <div class="text-center">
-              <a href="{% url 'torneos' %}" class="btn btn-outline-custom w-100 ">Ver Torneos</a>
+              <a href="{% url 'torneos' %}" class="btn btn-outline-custom w-100">Ver Torneos</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 {% endblock %}
