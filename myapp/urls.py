@@ -10,6 +10,7 @@ urlpatterns = [
     path('publicaciones/nueva-publicacion/', publicar , name='publicar'),
     
     path('perfil/<int:id>/', perfil , name='perfil'),
+    path('perfil/nuevo-social/', añadir_cuenta_social , name='añadir_cuenta_social'),
 ]
     
     

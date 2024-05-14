@@ -14,8 +14,22 @@
             {{ profile.user.email }}
             <br />
             {{ profile.date_of_birth|timesince }}
-            <br />
-            <i class="bi bi-twitch">https://www.twitch.tv/{{ profile.twitch }}</i>
+            <br />           
+          
+          </div>
+          <div class="card-footer">
+            <h6 class="text-center">Redes Sociales</h6>
+            {% if user == profile.user %}
+            <a href="{% url 'añadir_cuenta_social' %}" class="btn btn-custom w-100">Añadir Cuenta</a>
+            {% endif %}
+            <hr>
+            <div class="d-flex justify-content-end gap-4">
+              {% for social in profile.get_socials %}
+              <a href="{{ social.url }}" class="bi bi-{{ social.network|lower }} "  style="font-size: 2.5rem;"></a>
+            {% empty %}
+              <p>No hay cuentas sociales</p>
+            {% endfor %}
+            </div>
           </div>
         </div>
       </div>

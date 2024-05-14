@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .models import Game, Post, Tournament, Profile
-from .forms import PostForm, TournamentForm
+from .forms import PostForm, TournamentForm, ProfileSocialsForm
 from django.urls import reverse
 
 # Create your views here.
@@ -58,6 +58,7 @@ def nuevo_torneo(request):
         {'name': 'Crear Torneo'},        
     ]
     if request.method == 'POST':
+        print(request.POST)
         form = TournamentForm(request.POST)
         if form.is_valid():
             tournament = form.save(commit=False)
@@ -174,5 +175,38 @@ def perfil(request, id):
         
     return render(request, 'perfil.html', {
         'profile': profile,
+        'breadcrumbs': breadcrumbs
+    })
+
+@login_required
+def añadir_cuenta_social(request):
+    """
+    Vista para añadir una cuenta social al perfil.
+
+    Args:
+        request: La solicitud HTTP recibida.
+
+    Returns:
+        La respuesta HTTP con la plantilla 'añadir_cuenta_social.html' y el formulario para añadir una cuenta social.
+    """
+    breadcrumbs = [
+        {'name': 'Mi Perfil', 'url': reverse('perfil', args=[request.user.id])},
+        {'name': 'Añadir Cuenta Social'},        
+    ]
+    
+    if request.method == 'POST':
+        form = ProfileSocialsForm(request.POST)
+        if form.is_valid():
+            social = form.save(commit=False)
+            social.profile = request.user.profile
+            social.save()
+            messages.success(request, 'Cuenta social añadida correctamente.')
+            return redirect('perfil', request.user.id)
+        else:
+            messages.error(request, 'Error al añadir la cuenta social.')
+            
+    form = ProfileSocialsForm()
+    return render(request, 'nueva_red_social.html', {
+        'form': form,
         'breadcrumbs': breadcrumbs
     })

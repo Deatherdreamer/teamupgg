@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container" style="margin-top: -20px;">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center text-white"><strong>Añadir Red Social</strong></h1>
+        <p class="text-center text-white">Añade tus redes sociales para que te puedan contactar</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card bg-black bg-gradient border-light card-body rounded-4">
+          <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-group mb-2">
+                <label class="fw-bold" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% if field.help_text %}
+                  <br />
+                  <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {{ field }}
+
+                {% for error in field.errors %}
+                  <small style="color: red;">{{ error }}</small>
+                {% endfor %}
+              </div>
+            {% endfor %}
+            <br />
+            <div class="d-flex justify-content-end gap-2">
+              <a href="{% url 'perfil' user.id %}" class="btn btn-outline-light">Cancelar</a>
+              <button type="submit" class="btn btn-custom">Añadir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -128,6 +128,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -198,6 +214,14 @@
         "description": "allauth.account.forms",
         "isExtraImport": true,
         "detail": "allauth.account.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
         "documentation": {}
     },
     {
@@ -403,6 +427,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "myapp.migrations.0008_alter_post_game",
+        "description": "myapp.migrations.0008_alter_post_game",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('myapp', '0007_tournament_description_tournament_title'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='post',\n            name='game',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapp.game'),\n        ),",
+        "detail": "myapp.migrations.0008_alter_post_game",
+        "documentation": {}
+    },
+    {
         "label": "MyappConfig",
         "kind": 6,
         "importPath": "myapp.apps",
@@ -439,11 +472,20 @@
         "documentation": {}
     },
     {
+        "label": "ProfileSocialsForm",
+        "kind": 6,
+        "importPath": "myapp.forms",
+        "description": "myapp.forms",
+        "peekOfCode": "class ProfileSocialsForm(forms.ModelForm):\n    class Meta:\n        model = ProfileSocials\n        fields = ['network','url']\n        labels = {\n            'network': 'Red Social',\n            'url': 'URL'\n        }\n        help_texts = {\n            'network': 'La red social',",
+        "detail": "myapp.forms",
+        "documentation": {}
+    },
+    {
         "label": "Profile",
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Profile(models.Model):\n    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)\n    nickname = models.CharField(max_length=100, blank=True, null=True)\n    date_of_birth = models.DateField()\n    gender = models.CharField(max_length=10)\t\n    country = models.CharField(max_length=100)  \n    riot_puuid = models.CharField(max_length=100, blank=True, null=True)\n    def __str__(self):\n        return self.user.first_name + ' ' + self.user.last_name\nclass ProfileSocials(models.Model):",
+        "peekOfCode": "class Profile(models.Model):\n    \"\"\"\n    Representa el perfil de un usuario en la aplicación.\n    \"\"\"\n    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)\n    nickname = models.CharField(max_length=100, blank=True, null=True)\n    date_of_birth = models.DateField()\n    gender = models.CharField(max_length=10)\t\n    country = models.CharField(max_length=100)  \n    riot_puuid = models.CharField(max_length=100, blank=True, null=True)",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -452,7 +494,7 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class ProfileSocials(models.Model):\n    NETWORK_CHOICES = [\n        ('Facebook', 'Facebook'),\n        ('Twitter', 'Twitter'),\n        ('Instagram', 'Instagram'),\n        ('Twitch', 'Twitch'),\n        ('Youtube', 'Youtube'),\n        ('Discord', 'Discord'),\n        ('Steam', 'Steam'),\n    ]",
+        "peekOfCode": "class ProfileSocials(models.Model):\n    \"\"\"\n    Representa las redes sociales asociadas a un perfil.\n    \"\"\"\n    NETWORK_CHOICES = [\n        ('Facebook', 'Facebook'),\n        ('Twitter', 'Twitter'),\n        ('Instagram', 'Instagram'),\n        ('Twitch', 'Twitch'),\n        ('Youtube', 'Youtube'),",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -461,7 +503,7 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Game(models.Model):\n    name = models.CharField(max_length=100)\n    def __str__(self):\n        return self.name\nclass Post(models.Model):\n    title = models.CharField(max_length=100)\n    message = models.TextField()\n    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    def __str__(self):",
+        "peekOfCode": "class Game(models.Model):\n    \"\"\"\n    Representa un juego en la aplicación.\n    \"\"\"\n    name = models.CharField(max_length=100)\n    def __str__(self):\n        \"\"\"\n        Devuelve una representación en cadena del juego.\n        \"\"\"\n        return self.name",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -470,7 +512,7 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Post(models.Model):\n    title = models.CharField(max_length=100)\n    message = models.TextField()\n    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    def __str__(self):\n        return self.title + ' | ' + str(self.user)\nclass Tournament(models.Model):\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)",
+        "peekOfCode": "class Post(models.Model):\n    \"\"\"\n    Representa una publicación en la aplicación.\n    \"\"\"\n    title = models.CharField(max_length=100)\n    message = models.TextField()\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    def __str__(self):\n        \"\"\"",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -479,7 +521,7 @@
         "kind": 6,
         "importPath": "myapp.models",
         "description": "myapp.models",
-        "peekOfCode": "class Tournament(models.Model):\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    description = models.TextField()\n    is_public = models.BooleanField(default=False)\n    password = models.CharField(max_length=100, blank=True, null=True)\n    max_players = models.IntegerField()\n    date_of_tournament = models.DateTimeField()\n    participants = models.ManyToManyField(get_user_model(), related_name='participants')",
+        "peekOfCode": "class Tournament(models.Model):\n    \"\"\"\n    Representa un torneo en la aplicación.\n    \"\"\"\n    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)\n    game = models.ForeignKey(Game, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    description = models.TextField()\n    is_public = models.BooleanField(default=False)\n    password = models.CharField(max_length=100, blank=True, null=True)",
         "detail": "myapp.models",
         "documentation": {}
     },
@@ -488,7 +530,7 @@
         "kind": 5,
         "importPath": "myapp.urls",
         "description": "myapp.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('torneos/<int:id>/inscribirse/', inscribirse_torneo, name='inscribirse_torneo'),\n    path('torneos/nuevo-torneo/', nuevo_torneo, name='nuevo_torneo'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/<int:id>/', perfil , name='perfil'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', index, name='index'),\n    path('torneos/', torneos, name='torneos'),\n    path('torneos/<int:id>/inscribirse/', inscribirse_torneo, name='inscribirse_torneo'),\n    path('torneos/nuevo-torneo/', nuevo_torneo, name='nuevo_torneo'),\n    path('publicaciones/', publicaciones , name='publicaciones'),\n    path('publicaciones/nueva-publicacion/', publicar , name='publicar'),\n    path('perfil/<int:id>/', perfil , name='perfil'),\n    path('perfil/nuevo-social/', añadir_cuenta_social , name='añadir_cuenta_social'),\n]",
         "detail": "myapp.urls",
         "documentation": {}
     },
@@ -552,6 +594,15 @@
         "importPath": "myapp.views",
         "description": "myapp.views",
         "peekOfCode": "def perfil(request, id):\n    \"\"\"\n    Vista para el perfil de un usuario.\n    Args:\n        request: La solicitud HTTP recibida.\n        id: El ID del usuario cuyo perfil se desea ver.\n    Returns:\n        La respuesta HTTP con la plantilla 'perfil.html' y el perfil del usuario especificado.\n    \"\"\"\n    profile = Profile.objects.get(user_id=id)",
+        "detail": "myapp.views",
+        "documentation": {}
+    },
+    {
+        "label": "añadir_cuenta_social",
+        "kind": 2,
+        "importPath": "myapp.views",
+        "description": "myapp.views",
+        "peekOfCode": "def añadir_cuenta_social(request):\n    \"\"\"\n    Vista para añadir una cuenta social al perfil.\n    Args:\n        request: La solicitud HTTP recibida.\n    Returns:\n        La respuesta HTTP con la plantilla 'añadir_cuenta_social.html' y el formulario para añadir una cuenta social.\n    \"\"\"\n    breadcrumbs = [\n        {'name': 'Mi Perfil', 'url': reverse('perfil', args=[request.user.id])},",
         "detail": "myapp.views",
         "documentation": {}
     },

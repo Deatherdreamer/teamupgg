@@ -1,8 +1,10 @@
 from django import forms
-from .models import Post, Game, Profile, Tournament
+from .models import Post, Game, Profile, Tournament, ProfileSocials
 from allauth.account.forms import SignupForm
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 import datetime
+
 
 class MyCustomSignupForm(SignupForm):
     email = forms.EmailField(
@@ -136,3 +138,24 @@ class TournamentForm(forms.ModelForm):
             'date_of_tournament': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la fecha del torneo', 'type': 'date'})
         }
        
+class ProfileSocialsForm(forms.ModelForm):
+    class Meta:
+        model = ProfileSocials
+        fields = ['network','url']
+        labels = {
+            'network': 'Red Social',
+            'url': 'URL'
+        }
+        help_texts = {
+            'network': 'La red social',
+            'url': 'La url de la red social'
+        }
+        widgets = {
+            'network': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Seleccione la red social'}),
+            'url': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la url'})
+        }
+        
+        
+        
+
+    
